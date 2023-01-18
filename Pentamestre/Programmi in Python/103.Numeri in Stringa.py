@@ -3,6 +3,7 @@ i=0
 s=0
 l=0
 c=0
+f=0
 while True:
     n=str(input('Inserisci delle cifre: '))
     if(str.isdigit (n)):
@@ -11,5 +12,5 @@ c=len(n)
 while (i<c):
     l=n[i]
     i=i+1
-    s=l
-print (s)
+    s=s+int(l)
+print (int(s))
