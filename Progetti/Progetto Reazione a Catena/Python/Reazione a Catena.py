@@ -6,10 +6,12 @@ numero_canzone_precedente=0
 numero_parola_precedente=0
 numero_2=0
 numero_3=0
+variabile_scambio_squadre:str
+variavile_scambio_saldo=0
 lista_parole=['ciao', 'cane', 'gatto','topo','penna','matita','computer','telefono','quaderno','carta','pasta','pizza','bello','lampada','alfabeto','vocali'] 
 lista_indizi=['saluto','animale','animale','roditore','scrittura','grafite','informatica','chiamate','carta','alberi','alimento che si cuoce in acqua','alimento con pomodoro e mozzarella', 'aggettivo','fa luce','lettere','no consonanti'] 
 lista_parole_2=['c--o','c--e','g---o','t--o','p---a','m----a','c------r','t------o','q------o','c---a','p---a','p---a','b---o','l-----a','a------o','v----i'] 
-lista_testo_canzoni=['non volano farfalle, non stò più nella pelle...',"gloria, manchi tu nell'aria, chiesa di campania...","fatti mandare dalla mamma, a prendere il latte...","Un bicchiere di vino, con un panino...",'Camminerò ad un passo da te e fermeremo il vento...','La vita senza amore dimmi tu che vita è, oh dove sei andata...','Ma quanto è bello andare il giro con le ali sotto i piedi...','Perfavore non piangere e non ci rimanele male che noi due ci conosciamo bene...',"Ho guardato dentro un'emozione e ci ho visto tanto amore e ho capito perchè non si comanda il cuore"] 
+lista_testo_canzoni=['non volano farfalle, non stò più nella pelle...',"gloria, manchi tu nell'aria, chiesa di campania...","fatti mandare dalla mamma, a prendere il latte...","Un bicchiere di vino, con un panino...",'Camminerò ad un passo da te e fermeremo il vento...','La vita senza amore dimmi tu che vita è, oh dove sei andata...','Ma quanto è bello andare il giro con le ali sotto i piedi...','Perfavore non piangere e non ci rimanere male che noi due ci conosciamo bene...',"Ho guardato dentro un'emozione e ci ho visto tanto amore e ho capito perchè non si comanda il cuore"] 
 lista_indizi_canzoni=['San Givanni','Umberto Tozzi','Gianni Morandi','Albano Carrisi e Romina Power','Mr.Rain','Fedez','Lunapop','Pinguini Tattici Nucleari','Vasco Rossi'] 
 lista_nome_canzoni=['farfalle','gloria','fatti mandare dalla mamma','felicità','supereroi','la dolce vita','vespa 50 special','pastello bianco','senza parole'] 
 lista_terzo_gioco_risposte=['pollicino', 'gong', 'partecipazione', 'materasso' ]
@@ -42,12 +44,12 @@ fine_gioco=['Esatto','CO      O','???']
 fine_gioco_indizio=['Esatto','CO      O','Visto']
 fine_gioco_risposta='corretto'
 i=0  
-print('Benvenuti a Reazione a Catena, in questo gioco si può giocare solo in 6 persone, vi dovrete dividere in due squadre e scegliere un nome! Per decidere chi inizierà il gioco scegliete un capitano e inserite la loro età, partirà la squadra che ha il capitano più vecchio')  
+print('Benvenuti a Reazione a Catena, in questo gioco si può giocare solo in 6 persone, vi dovrete dividere in due squadre e scegliere un nome! Per decidere, chi inizierà il gioco, scegliete un capitano e inserite la sua età, partirà la squadra che ha il capitano più anziano.')  
 nome_1=str(input('Inserisci il nome della prima squadra: '))  
 nome_2=str(input('Inserisci il nome della seconda squadra: '))  
 età_1=int(input("Inserisci l'età del capitano della prima squadra: "))  
 età_2=int(input("Inserisci l'età del capitano della seconda squadra: "))  
-print("Bene, iniziamo. Io sono Marco Liorni, il conduttore di Reazione a Catena. Il primo gioco è una sorta di impiccato solo che dovrete inserire non lettere ma parole, ogni parola provata e sbagliata il turno passerà all'altra squadra. Se anche essa sbaglierà toccherà di nuovo alla squadra precedente ma avranno un indizio. Ogni parola azzeccata vale 2000 euro. Ci saranno quatrto manche. Chiunque indovinerà il turno passerà alla squadra che ha iniziato per primo. P.S. inserisci le parole con le lettere minuscole.")  
+print("Bene, iniziamo. Io sono Marco Liorni, il conduttore di Reazione a Catena. Il primo gioco è una sorta di impiccato solo che dovrete inserire non lettere ma parole, ad ogni parola sbagliata il turno passerà all'altra squadra. Se anche essa sbaglierà toccherà di nuovo alla squadra precedente ma avrà un indizio. Ogni parola azzeccata vale 2000 euro. Ci saranno quattro manche. Se indovinerete la parola il turno sarà ancora vostro. P.S. inserisci le parole con le lettere minuscole.")  
 if(età_1>età_2):  
     print('Inizieranno i/gli '+nome_1)  
     squadra_1=nome_1  
@@ -82,6 +84,12 @@ while True:
         saldo_squadra_1=saldo_squadra_1+2000 
     else:  
         saldo_squadra_2=saldo_squadra_2+2000 
+        variabile_scambio_squadre=squadra_1
+        squadra_1=squadra_2
+        squadra_2=variabile_scambio_squadre
+        variavile_scambio_saldo=saldo_squadra_1
+        saldo_squadra_1=saldo_squadra_2
+        saldo_squadra_2=variavile_scambio_saldo
     print(squadra_1+' siete a: ')
     print(saldo_squadra_1) 
     print(squadra_2+' siete a: ')
@@ -92,33 +100,29 @@ while True:
     if(numero_prove==3): 
         break 
     numero_prove=numero_prove+1 
-print("Perfetto, siamo giunti al seondo gioco, questo consisterà nel trovare il titolo della canzone dato il testo. Avrete come prima una possibilità a squadra senza indizi. Una volta provato entrame le squadre senza ottenere risultati, apparirà un suggerimento che sarà l'autore della canzone. Ora inizierà la squadra che ha un monte premi più basso, nel caso sia pari inizierà la squadra con il capitano più anziano. Possiamo partire. P.S. inserisci le parole con le lettere minuscole.") 
+print("Perfetto, siamo giunti al seondo gioco, questo consisterà nel trovare il titolo della canzone dato il testo. Avrete come prima una possibilità a squadra senza indizi. Una volta provato entrambe le squadre senza ottenere risultati, apparirà come suggerimento l'autore della canzone. Ora inizierà la squadra che ha un monte premi più alto, nel caso sia pari inizierà la squadra con il capitano più anziano. Possiamo partire. P.S. inserisci le parole con le lettere minuscole.") 
 if(saldo_squadra_1==saldo_squadra_2): 
     if(età_1>età_2):  
         print('Inizieranno i/gli '+squadra_1)  
-        squadra_1=squadra_1 
-        squadra_2=squadra_2
-        saldo_squadra_1=saldo_squadra_1
-        saldo_squadra_2=saldo_squadra_2
     else:  
         print('Inizieranno i/gli '+squadra_2)  
-        squadra_1_2=squadra_2
-        squadra_2_2=squadra_1
-        saldo_squadra_1_2=saldo_squadra_2
-        saldo_squadra_2_2=saldo_squadra_1
+        variabile_scambio_squadre=squadra_1
+        squadra_1=squadra_2
+        squadra_2=variabile_scambio_squadre
+        variavile_scambio_saldo=saldo_squadra_1
+        saldo_squadra_1=saldo_squadra_2
+        saldo_squadra_2=variavile_scambio_saldo
 else: 
     if(saldo_squadra_1>saldo_squadra_2):  
         print('Inizieranno i/gli '+squadra_1)  
-        squadra_1_2=squadra_1  
-        squadra_2_2=squadra_2  
-        saldo_squadra_1_2=saldo_squadra_1
-        saldo_squadra_2_2=saldo_squadra_2
     else:  
         print('Inizieranno i/gli '+squadra_2)  
-        squadra_1_2=squadra_2  
-        squadra_2_2=squadra_1 
-        saldo_squadra_1_2=saldo_squadra_2
-        saldo_squadra_2_2=saldo_squadra_1
+        variabile_scambio_squadre=squadra_1
+        squadra_1=squadra_2
+        squadra_2=variabile_scambio_squadre
+        variavile_scambio_saldo=saldo_squadra_1
+        saldo_squadra_1=saldo_squadra_2
+        saldo_squadra_2=variavile_scambio_saldo
 prove=0
 i=0
 numero_prove=0
@@ -148,42 +152,45 @@ while True:
             i=i+1  
     print('Bravi, avete indovinato')  
     if(i%2==0):  
-        saldo_squadra_1_2=saldo_squadra_1_2+6000 
+        saldo_squadra_1=saldo_squadra_1+6000 
     else:  
-        saldo_squadra_2_2=saldo_squadra_2_2+6000 
-    print(squadra_1_2+' siete a: ')
-    print(saldo_squadra_1_2) 
-    print(squadra_2_2+' siete a: ')
-    print(saldo_squadra_2_2) 
+        saldo_squadra_2=saldo_squadra_2+6000 
+        variabile_scambio_squadre=squadra_1
+        squadra_1=squadra_2
+        squadra_2=variabile_scambio_squadre
+        variavile_scambio_saldo=saldo_squadra_1
+        saldo_squadra_1=saldo_squadra_2
+        saldo_squadra_2=variavile_scambio_saldo
+    print(squadra_1+' siete a: ')
+    print(saldo_squadra_1) 
+    print(squadra_2+' siete a: ')
+    print(saldo_squadra_2) 
     numero_canzone_precedente=numero_canzone
     numero_canzone_2=numero_canzone_precedente
     numero_canzone_3=numero_canzone_2
-    if(numero_prove==3): 
+    if(numero_prove==2): 
         break 
     numero_prove=numero_prove+1 
-if(saldo_squadra_1_2>saldo_squadra_2_2): 
-    squadra_1_3=squadra_1_2 
-    squadra_2_3=squadra_2_2 
-    saldo_squadra_1_3=saldo_squadra_1_2 
-    saldo_squadra_2_3=saldo_squadra_2_2 
+if(saldo_squadra_1>saldo_squadra_2): 
+    squadra_1=squadra_1
 else: 
-    squadra_1_3=squadra_2_2 
-    squadra_2_3=squadra_1_2 
-    saldo_squadra_2_3=saldo_squadra_2_2 
-    saldo_squadra_1_3=saldo_squadra_2_2 
-print("Siamo arriati all'ultimo gioco in cui potrete giocare entrambe le squadre, Dovrete trovare una parola che collega qulle che saranno date")
-if(saldo_squadra_1_3>saldo_squadra_2_3):
-    print('Inizieranno i/gli/le '+squadra_1_3)
-    squadra_1_4=squadra_1_3
-    squadra_2_4=squadra_2_3
-    saldo_squadra_1_4=saldo_squadra_1_3
-    saldo_squadra_2_4=saldo_squadra_2_3
+    variabile_scambio_squadre=squadra_1
+    squadra_1=squadra_2
+    squadra_2=variabile_scambio_squadre
+    variavile_scambio_saldo=saldo_squadra_1
+    saldo_squadra_1=saldo_squadra_2
+    saldo_squadra_2=variavile_scambio_saldo
+print("Siamo arriati all'ultimo gioco in cui giocheranno entrambe le squadre. Dovrete trovare la parola che collega quelle date.")
+if(saldo_squadra_1>saldo_squadra_2):
+    print('Inizieranno i/gli/le '+squadra_1)
 else:
-    print('Inizieranno i/gli/le '+saldo_squadra_2_3)
-    squadra_1_4=squadra_2_3
-    squadra_2_4=squadra_1_3
-    saldo_squadra_2_4=saldo_squadra_2_3
-    saldo_squadra_1_4=saldo_squadra_2_3
+    print('Inizieranno i/gli/le '+saldo_squadra_2)
+    variabile_scambio_squadre=squadra_1
+    squadra_1=squadra_2
+    squadra_2=variabile_scambio_squadre
+    variavile_scambio_saldo=saldo_squadra_1
+    saldo_squadra_1=saldo_squadra_2
+    saldo_squadra_2=variavile_scambio_saldo
 print(quarto_gioco_1)
 print(quarto_gioco_2)
 print(quarto_gioco_3)
@@ -191,29 +198,27 @@ print(quarto_gioco_4)
 print(quarto_gioco_5)
 print(quarto_gioco_6)
 print(quarto_gioco_7)
-prova_quarto_gioco=str(input(squadra_1_4+'Inserisci la tua parola: '))
-if(prova_quarto_gioco==quarto_gioco_2):
-    saldo_squadra_1_4=saldo_squadra_1_4+2000
-    squadra_1_5=squadra_1_4
-    saldo_squadra_1_5=saldo_squadra_1_4
-    squadra_2_5=squadra_2_4
-    saldo_squadra_2_5=saldo_squadra_2_4
+prova_quarto_gioco=str(input(squadra_1+' Inserisci la tua parola: '))
+if(prova_quarto_gioco==risposta_2):
+    saldo_squadra_1=saldo_squadra_1+2000
     print('Bravi, avete indovinato')
-    print(squadra_1_4+'siete a:')
-    print(saldo_squadra_1_4)
-    print(squadra_2_4+'siete a:')
-    print(saldo_squadra_2_4)
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
 else:
-    saldo_squadra_2_5=saldo_squadra_2_4+2000
-    saldo_squadra_2_5=saldo_squadra_1_4
-    saldo_squadra_1_5=saldo_squadra_2_4
-    squadra_2_5=squadra_1_4
-    squadra_1_5=squadra_2_4
+    saldo_squadra_2=saldo_squadra_2+2000
+    variabile_scambio_squadre=squadra_1
+    squadra_1=squadra_2
+    squadra_2=variabile_scambio_squadre
+    variavile_scambio_saldo=saldo_squadra_1
+    saldo_squadra_1=saldo_squadra_2
+    saldo_squadra_2=variavile_scambio_saldo
     print('Mi spiace, ora vedrete la risposta!')
-    print(squadra_1_4+'siete a:')
-    print(saldo_squadra_1_5)
-    print(squadra_2_4+'siete a:')
-    print(saldo_squadra_2_5)
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
 print(quarto_gioco_1)
 print(risposta_2)
 print(quarto_gioco_3)
@@ -221,29 +226,31 @@ print(quarto_gioco_4)
 print(quarto_gioco_5)
 print(quarto_gioco_6)
 print(quarto_gioco_7)
-prova_quarto_gioco=str(input(squadra_1_5+'Inserisci la tua parola: '))
-if(prova_quarto_gioco==quarto_gioco_3):
-    saldo_squadra_1_5=saldo_squadra_1_5+2000
-    squadra_1_6=squadra_1_5
-    saldo_squadra_1_6=saldo_squadra_1_5
-    squadra_2_6=squadra_2_5
-    saldo_squadra_2_6=saldo_squadra_2_5
+prova_quarto_gioco=str(input(squadra_1+' Inserisci la tua parola: '))
+if(prova_quarto_gioco==risposta_3):
+    saldo_squadra_1=saldo_squadra_1+2000
+    squadra_1=squadra_1
+    saldo_squadra_1=saldo_squadra_1
+    squadra_2=squadra_2
+    saldo_squadra_2=saldo_squadra_2
     print('Bravi, avete indovinato')
-    print(squadra_1_6+'siete a:')
-    print(saldo_squadra_1_6)
-    print(squadra_2_6+'siete a:')
-    print(saldo_squadra_2_6)
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
 else:
-    saldo_squadra_2_5=saldo_squadra_2_5+2000
-    saldo_squadra_2_6=saldo_squadra_1_5
-    saldo_squadra_1_6=saldo_squadra_2_5
-    squadra_2_6=squadra_1_5
-    squadra_1_6=squadra_2_5
+    saldo_squadra_2=saldo_squadra_2+2000
+    variabile_scambio_squadre=squadra_1
+    squadra_1=squadra_2
+    squadra_2=variabile_scambio_squadre
+    variavile_scambio_saldo=saldo_squadra_1
+    saldo_squadra_1=saldo_squadra_2
+    saldo_squadra_2=variavile_scambio_saldo
     print('Mi spiace, ora vedrete la risposta!')
-    print(squadra_1_6+'siete a:')
-    print(saldo_squadra_1_6)
-    print(squadra_2_6+'siete a:')
-    print(saldo_squadra_2_6)
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
 print(quarto_gioco_1)
 print(risposta_2)
 print(risposta_3)
@@ -251,29 +258,31 @@ print(quarto_gioco_4)
 print(quarto_gioco_5)
 print(quarto_gioco_6)
 print(quarto_gioco_7)
-prova_quarto_gioco=str(input(squadra_1_6+'Inserisci la tua parola: '))
-if(prova_quarto_gioco==quarto_gioco_4):
-    saldo_squadra_1_6=saldo_squadra_1_6+2000
-    squadra_1_7=squadra_1_6
-    saldo_squadra_1_7=saldo_squadra_1_6
-    squadra_2_7=squadra_2_6
-    saldo_squadra_2_7=saldo_squadra_2_6
+prova_quarto_gioco=str(input(squadra_1+'Inserisci la tua parola: '))
+if(prova_quarto_gioco==risposta_4):
+    saldo_squadra_1=saldo_squadra_1+2000
+    squadra_1=squadra_1
+    saldo_squadra_1=saldo_squadra_1
+    squadra_2=squadra_2
+    saldo_squadra_2=saldo_squadra_2
     print('Bravi, avete indovinato')
-    print(squadra_1_7+'siete a:')
-    print(saldo_squadra_1_7)
-    print(squadra_2_7+'siete a:')
-    print(saldo_squadra_2_7)
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
 else:
-    saldo_squadra_2_6=saldo_squadra_2_6+2000
-    saldo_squadra_2_7=saldo_squadra_1_6
-    saldo_squadra_1_7=saldo_squadra_2_6
-    squadra_2_7=squadra_1_6
-    squadra_1_7=squadra_2_6
+    saldo_squadra_2=saldo_squadra_2+2000
+    variabile_scambio_squadre=squadra_1
+    squadra_1=squadra_2
+    squadra_2=variabile_scambio_squadre
+    variavile_scambio_saldo=saldo_squadra_1
+    saldo_squadra_1=saldo_squadra_2
+    saldo_squadra_2=variavile_scambio_saldo
     print('Mi spiace, ora vedrete la risposta!')
-    print(squadra_1_7+'siete a:')
-    print(saldo_squadra_1_7)
-    print(squadra_2_7+'siete a:')
-    print(saldo_squadra_2_7)
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
 print(quarto_gioco_1)
 print(risposta_2)
 print(risposta_3)
@@ -281,59 +290,31 @@ print(risposta_4)
 print(quarto_gioco_5)
 print(quarto_gioco_6)
 print(quarto_gioco_7)
-prova_quarto_gioco=str(input(squadra_1_7+'Inserisci la tua parola: '))
-if(prova_quarto_gioco==quarto_gioco_5):
-    saldo_squadra_1_7=saldo_squadra_1_7+2000
-    squadra_1_8=squadra_1_7
-    saldo_squadra_1_8=saldo_squadra_1_7
-    squadra_2_8=squadra_2_7
-    saldo_squadra_2_8=saldo_squadra_2_7
+prova_quarto_gioco=str(input(squadra_1+'Inserisci la tua parola: '))
+if(prova_quarto_gioco==risposta_5):
+    saldo_squadra_1=saldo_squadra_1+2000
+    squadra_1=squadra_1
+    saldo_squadra_1_8=saldo_squadra_1
+    squadra_2=squadra_2
+    saldo_squadra_2=saldo_squadra_2
     print('Bravi, avete indovinato')
-    print(squadra_1_8+'siete a:')
-    print(saldo_squadra_1_8)
-    print(squadra_2_8+'siete a:')
-    print(saldo_squadra_2_8)
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
 else:
-    saldo_squadra_2_7=saldo_squadra_2_7+2000
-    saldo_squadra_2_8=saldo_squadra_1_7
-    saldo_squadra_1_8=saldo_squadra_2_7
-    squadra_2_8=squadra_1_7
-    squadra_1_8=squadra_2_7
+    saldo_squadra_2=saldo_squadra_2+2000
+    variabile_scambio_squadre=squadra_1
+    squadra_1=squadra_2
+    squadra_2=variabile_scambio_squadre
+    variavile_scambio_saldo=saldo_squadra_1
+    saldo_squadra_1=saldo_squadra_2
+    saldo_squadra_2=variavile_scambio_saldo
     print('Mi spiace, ora vedrete la risposta!')
-    print(squadra_1_8+'siete a:')
-    print(saldo_squadra_1_8)
-    print(squadra_2_8+'siete a:')
-    print(saldo_squadra_2_8)
-print(quarto_gioco_1)
-print(risposta_2)
-print(risposta_3)
-print(risposta_4)
-print(quarto_gioco_5)
-print(quarto_gioco_6)
-print(quarto_gioco_7)
-prova_quarto_gioco=str(input(squadra_1_8+'Inserisci la tua parola: '))
-if(prova_quarto_gioco==quarto_gioco_6):
-    saldo_squadra_1_8=saldo_squadra_1_8+2000
-    squadra_1_9=squadra_1_8
-    saldo_squadra_1_9=saldo_squadra_1_8
-    squadra_2_9=squadra_2_8
-    saldo_squadra_2_9=saldo_squadra_2_8
-    print('Bravi, avete indovinato')
-    print(squadra_1_9+'siete a:')
-    print(saldo_squadra_1_9)
-    print(squadra_2_9+'siete a:')
-    print(saldo_squadra_2_9)
-else:
-    saldo_squadra_2_8=saldo_squadra_2_8+2000
-    saldo_squadra_2_9=saldo_squadra_1_8
-    saldo_squadra_1_9=saldo_squadra_2_8
-    squadra_2_9=squadra_1_8
-    squadra_1_9=squadra_2_8
-    print('Mi spiace, ora vedrete la risposta!')
-    print(squadra_1_9+'siete a:')
-    print(saldo_squadra_1_9)
-    print(squadra_2_9+'siete a:')
-    print(saldo_squadra_2_9)
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
 print(quarto_gioco_1)
 print(risposta_2)
 print(risposta_3)
@@ -341,14 +322,46 @@ print(risposta_4)
 print(risposta_5)
 print(quarto_gioco_6)
 print(quarto_gioco_7)
-if(saldo_squadra_2_9>saldo_squadra_1_9):
-    print('Passano i/gli: '+squadra_2_9)
-    squadra_finale=squadra_2_9
-    saldo_finale=saldo_squadra_2_9
+prova_quarto_gioco=str(input(squadra_1+'Inserisci la tua parola: '))
+if(prova_quarto_gioco==risposta_6):
+    saldo_squadra_1=saldo_squadra_1+2000
+    squadra_1=squadra_1
+    saldo_squadra_1=saldo_squadra_1
+    squadra_2=squadra_2
+    saldo_squadra_2=saldo_squadra_2
+    print('Bravi, avete indovinato')
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
 else:
-    print('Passano i/gli: '+squadra_1_9)
-    squadra_finale=squadra_1_9
-    saldo_finale=saldo_squadra_1_9
+    saldo_squadra_2=saldo_squadra_2+2000
+    variabile_scambio_squadre=squadra_1
+    squadra_1=squadra_2
+    squadra_2=variabile_scambio_squadre
+    variavile_scambio_saldo=saldo_squadra_1
+    saldo_squadra_1=saldo_squadra_2
+    saldo_squadra_2=variavile_scambio_saldo
+    print('Mi spiace, ora vedrete la risposta!')
+    print(squadra_1+' siete a:')
+    print(saldo_squadra_1)
+    print(squadra_2+' siete a:')
+    print(saldo_squadra_2)
+print(quarto_gioco_1)
+print(risposta_2)
+print(risposta_3)
+print(risposta_4)
+print(risposta_5)
+print(risposta_6)
+print(quarto_gioco_7)
+if(saldo_squadra_2>saldo_squadra_1):
+    print('Passano i/gli: '+squadra_2)
+    squadra_finale=squadra_2
+    saldo_finale=saldo_squadra_2
+else:
+    print('Passano i/gli: '+squadra_2)
+    squadra_finale=squadra_1
+    saldo_finale=saldo_squadra_1
 print("Siamo giunti all'ultimo gioco, dovrete trovare una parola che accumuna le parole date. Avete una sola possibilità. Se sbagliate il monte premi si dimezzerà.")
 print(ultimo_1)
 prova_ultimo=str(input('Inserisci la parole che accomuna le parole date: '))
