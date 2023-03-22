@@ -450,7 +450,7 @@ if(saldo_squadra_2>saldo_squadra_1):
     saldo_finale=saldo_squadra_2
 else:
     #stampo la squadra vincente
-    print('Passano i/gli: '+squadra_2)
+    print('Passano i/gli: '+squadra_1)
     #inverto le variabili SQUADRA_1 e _2 così che chi abbia indovinato ha ancora il turno
     #inverto le variabili SALDO_SQUADRA_1 e _2 in modo da mantenere i giusti monte premi alle dovute squadre 
     squadra_finale=squadra_1
@@ -465,7 +465,8 @@ prova_ultimo=str(input('Inserisci la parole che accomuna le parole date: '))
 if(prova_ultimo==ultimo_1_risposta):
     print('Hai indovinato')
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 else:
     print('Hai sbagliato, ora ti mostro la soluzione. Il vostro montepremi di dimezzerà.')
     #aggiorno il monte premi
@@ -473,7 +474,8 @@ else:
     #mostro la soluzione
     print(ultimo_1_risposta)
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 #mostro la domanda
 print(ultimo_2)
 #domando la rsposta
@@ -482,7 +484,8 @@ prova_ultimo=str(input('Inserisci la parole che accomuna le parole date: '))
 if(prova_ultimo==ultimo_2_risposta):
     print('Hai indovinato')
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 else:
     print('Hai sbagliato, ora ti mostro la soluzione. Il vostro montepremi di dimezzerà.')
     #aggiorno il monte premi
@@ -490,7 +493,8 @@ else:
     #mostro la soluzione
     print(ultimo_2_risposta)
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 #mostro la domanda
 print(ultimo_3)
 #domando la ripsosta
@@ -499,7 +503,8 @@ prova_ultimo=str(input('Inserisci la parole che accomuna le parole date: '))
 if(prova_ultimo==ultimo_3_risposta):
     print('Hai indovinato')
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 else:
     print('Hai sbagliato, ora ti mostro la soluzione. Il vostro montepremi di dimezzerà.')
     #aggiorno il monte premi
@@ -507,7 +512,8 @@ else:
     #mostro la risposta
     print(ultimo_3_risposta)
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 #mostro la domanda
 print(ultimo_4)
 #domando la risposta
@@ -516,7 +522,8 @@ prova_ultimo=str(input('Inserisci la parole che accomuna le parole date: '))
 if(prova_ultimo==ultimo_4_risposta):
     print('Hai indovinato')
     #mostro il risultato
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 else:
     print('Hai sbagliato, ora ti mostro la soluzione. Il vostro montepremi di dimezzerà.')
     #aggiorno il monte premi
@@ -524,7 +531,8 @@ else:
     #mostro la risposta
     print(ultimo_4_risposta)
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 #mostro la domnda
 print(ultimo_5)
 #domando la risposta
@@ -533,7 +541,8 @@ prova_ultimo=str(input('Inserisci la parole che accomuna le parole date: '))
 if(prova_ultimo==ultimo_5_risposta):
     print('Hai indovinato')
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 else:
     print('Hai sbagliato, ora ti mostro la soluzione. Il vostro montepremi di dimezzerà.')
     #aggiorno il monte premi
@@ -541,7 +550,8 @@ else:
     #mostro la risposta
     print(ultimo_5_risposta)
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 #mostro la domanda  
 print(ultimo_6)
 ##chiedo la risposta
@@ -550,7 +560,8 @@ prova_ultimo=str(input('Inserisci la parole che accomuna le parole date: '))
 if(prova_ultimo==ultimo_6_risposta):
     print('Hai indovinato')
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 else:
     print('Hai sbagliato, ora ti mostro la soluzione. Il vostro montepremi di dimezzerà.')
     #aggiorno il monte premi
@@ -558,7 +569,8 @@ else:
     #mostro la risposta
     print(ultimo_6_risposta)
     #mostro il monte premi
-    print('Il vostro saldo è: '+saldo_finale)
+    print('Il vostro saldo è: ')
+    print(saldo_finale)
 #gioco finale
 print("Ora dovrete trovare l'ultima parola, avrete però solo una parola data. Potrete chiedere l'altra parola ma il monte premi si dimezzerà. Se volete comprare il terzo elemento, scrivete 'Aquisto'")
 #mostro la domanda
@@ -574,6 +586,7 @@ prova_finale=str(input("Inserisci l'ultima parola corretta per vincere: "))
 #controllo se è giusta
 if(prova_finale==fine_gioco_risposta):
     #stampo il monte premi vinto
-    print('Bravi! Avete vinto: '+saldo_finale)
+    print('Bravi! Avete vinto: ')
+    print(saldo_finale)
 else:
     print('Mi spiace, avete perso')
